@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import tw from "twin.macro";
 import UserService from "../graphql/services/userService";
+import { RootState } from "../store";
 
 const Body = styled.div`
   display: flex;
@@ -78,6 +81,8 @@ const Button = styled.button`
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const user = useSelector((state: RootState) => state.user.user);
+  const navigate = useNavigate();
   return (
     <Body>
       <Form>
@@ -103,6 +108,7 @@ const Register = () => {
               email,
               password,
             });
+            user && navigate("/");
             console.log(fetchedUser);
           }}
         >

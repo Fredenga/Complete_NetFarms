@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import tw from "twin.macro";
 import UserService from "../graphql/services/userService";
@@ -82,12 +83,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const user = useSelector((state: RootState) => state.user.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   async function LoginUser(event: any) {
     event.preventDefault();
     const fetchedUser = await UserService.login({ email, password });
     fetchedUser && dispatch(setUser(fetchedUser.login));
+    user && navigate("/");
     console.log(user);
   }
   return (
