@@ -1,0 +1,15 @@
+export const categories: string[] = [
+  "legumes",
+  "leaves",
+  "bulbs",
+  "roots",
+  "flowers",
+  "grains",
+  "fruits",
+  "stems",
+  "nuts",
+  "mushrooms",
+  "poultry",
+  "dairy",
+  "fish",
+];
